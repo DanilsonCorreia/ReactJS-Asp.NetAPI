@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Mapster" Version="7.4.0" />
     <PackageReference Include="MediatR" Version="13.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.7">
@@ -20,6 +21,9 @@
   <ItemGroup>
     <Reference Include="Aplication">
       <HintPath>..\Aplication\bin\Debug\net8.0\Aplication.dll</HintPath>
+    </Reference>
+    <Reference Include="Contracts">
+      <HintPath>..\Contracts\bin\Debug\net8.0\Contracts.dll</HintPath>
     </Reference>
     <Reference Include="Infrastructure">
       <HintPath>..\Infrastructure\bin\Debug\net8.0\Infrastructure.dll</HintPath>
