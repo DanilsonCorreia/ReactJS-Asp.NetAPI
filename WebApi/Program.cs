@@ -1,3 +1,4 @@
+using Aplication;
 using Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,6 +14,8 @@ builder.Services.AddDbContext<MoviesDbContext>(opt =>
 {
     opt.UseSqlite(builder.Configuration.GetConnectionString("DbConnectionString"));
 });
+
+builder.Services.AddApplication();
 
 var app = builder.Build();
 
