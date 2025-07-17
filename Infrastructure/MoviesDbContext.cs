@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure
 {
@@ -6,7 +7,7 @@ namespace Infrastructure
     {
         public MoviesDbContext(DbContextOptions options) : base(options) { }
 
-
+        public DbSet<Movie> Movies { get; set; }
 
     }
 }
