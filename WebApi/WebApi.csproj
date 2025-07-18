@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Client\movies\config.ts" />
     <None Remove="Client\movies\src\api\apiConnector.ts" />
     <None Remove="Client\movies\src\components\movies\MovieForm.tsx" />
     <None Remove="Client\movies\src\components\movies\MovieTableItem.tsx" />
@@ -48,6 +49,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="Client\movies\config.ts" />
     <TypeScriptCompile Include="Client\movies\src\api\apiConnector.ts" />
     <TypeScriptCompile Include="Client\movies\src\components\movies\MovieForm.tsx" />
     <TypeScriptCompile Include="Client\movies\src\components\movies\MovieTable.tsx" />

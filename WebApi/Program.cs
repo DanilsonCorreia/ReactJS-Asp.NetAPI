@@ -14,7 +14,15 @@ builder.Services.AddDbContext<MoviesDbContext>(opt =>
 {
     opt.UseSqlite(builder.Configuration.GetConnectionString("DbConnectionString"));
 });
-
+builder.Services.AddCors(opt =>
+{
+    opt.AddPolicy("CorsPolicy", policyBuilder =>
+    {
+        policyBuilder.WithOrigins("http://localhost:5174")
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+    });
+});
 builder.Services.AddApplication();
 builder.Services.AddExceptionHandler<ExceptionHandler>();
 
@@ -26,7 +34,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseRouting();
+app.UseCors("CorsPolicy");
 app.UseExceptionHandler(_ => { });
 app.UseHttpsRedirection();
 app.AddMoviesEndpoint();
