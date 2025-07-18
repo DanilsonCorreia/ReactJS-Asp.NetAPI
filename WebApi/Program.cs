@@ -1,6 +1,7 @@
 using Aplication;
 using Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using WebApi.Handlers;
 using WebApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +16,7 @@ builder.Services.AddDbContext<MoviesDbContext>(opt =>
 });
 
 builder.Services.AddApplication();
+builder.Services.AddExceptionHandler<ExceptionHandler>();
 
 var app = builder.Build();
 
@@ -25,6 +27,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseExceptionHandler(_ => { });
 app.UseHttpsRedirection();
 app.AddMoviesEndpoint();
 app.Run();

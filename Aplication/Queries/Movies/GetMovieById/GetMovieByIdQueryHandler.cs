@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Contracts.Exceptions;
 using Contracts.Responses;
+using Domain.Entities;
 using Infrastructure;
 using Mapster;
 using MediatR;
@@ -24,7 +26,7 @@ namespace Aplication.Queries.Movies.GetMovieById
                 .FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
             if (movie is null)
             {
-                throw new Exception();
+                throw new NotFoundException($"{nameof(Movie)} with {nameof(Movie.Id)}: {request.Id} was not found in database");
             }
 
             return movie.Adapt<GetMovieByIdResponse>();

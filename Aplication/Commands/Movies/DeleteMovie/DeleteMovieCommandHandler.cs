@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Contracts.Exceptions;
+using Domain.Entities;
 using Infrastructure;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -22,7 +24,7 @@ namespace Aplication.Commands.Movies.DeleteMovie
                 .FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
             if (movieToDelete is null) 
             {
-                throw new Exception();
+                throw new NotFoundException($"{nameof(Movie)} with {nameof(Movie.Id)}: {request.Id} was not found in database");
             }
 
             _moviesDbContext.Movies.Remove(movieToDelete);

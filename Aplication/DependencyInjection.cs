@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Aplication.Behaviors;
 using Aplication.Mappings;
 using FluentValidation;
 using Mapster;
@@ -18,6 +19,8 @@ namespace Aplication
             services.AddMediatR(cf =>
             {
                 cf.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+
+                cf.AddOpenBehavior(typeof(ValidationBehavior<,>));
             });
 
             MappingConfig.Configure();
